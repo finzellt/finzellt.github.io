@@ -20,18 +20,16 @@ plugins:
 - jekyll-remote-theme
 
 # Site settings
-url: 'https://msu-cerl.github.io'
+url: 'https://finzellt.github.io/'
 baseurl: ''
-title: 'MSU CERL'
+title: 'Thomas Finzell, Phd'
 description: |
-  We're working to demystify how college students learn to do computational work.
+  Working at the intersection of computation, (astro)physics, and teaching
   <br>
   <br>
-  Interested in joining us?
-  <br>
-  Send an email to dsilvia@msu.edu.
+  Send an email to thomasfinzell@msu.edu.
 permalink: pretty
-logo: "/assets/img/logo.png"
+logo: "/assets/Finzell_Headshot.jpg"
 
 # Pagination
 paginate: 5

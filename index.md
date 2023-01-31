@@ -3,12 +3,10 @@ title: Thomas Finzell, Visiting Assistant Professor
 layout: page
 aside: True
 #feature_image: "https://picsum.photos/1300/400?image=989"
-feature_image: "/assets/img/fermi_novae.jpg" #image found here: https://images.app.goo.gl/Z6X1KbgBkZsMsbou6
+feature_image: "/assets/img/fermi_cut.jpg" #image found here: https://images.app.goo.gl/Z6X1KbgBkZsMsbou6
 #feature_text: |
   # Welcome!
 ---
-
-![finzell_headshot](/assets/Finzell_Headshot.jpg)
 
 The Computational Education Research Lab (CERL) at [Michigan State University](https://msu.edu) is an interdisciplinary collaboration that studies how students learn to do computational work and their attitudes about doing that work. In particular, we explore how students learn to integrate computation into their education outside of traditional computer science courses.
 

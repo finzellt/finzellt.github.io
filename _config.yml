@@ -41,12 +41,12 @@ paginate_path: /blog/page:num
 navigation_header:
 - title: Home
   url: /
-- title: People
-  url: /people/
-- title: Projects
-  url: /projects/
-- title: Curriculum Development
-  url: /curriculumdev/
+- title: About
+  url: /about.md/
+- title: Research
+  url: /research/
+- title: Teaching
+  url: /teaching/
 - title: Publications
   url: /pubs/
 

@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Background — Tom Finzell</title>
+  <meta name="description" content="Tom Finzell's career path: from astrophysics research to building production data systems.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,400&family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    /* ── Reset & Base ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --c-bg: #FAFAF8;
+      --c-surface: #FFFFFF;
+      --c-text: #1C1C1A;
+      --c-text-secondary: #5A5A56;
+      --c-text-tertiary: #8A8A84;
+      --c-accent: #2D5A3D;
+      --c-accent-light: rgba(45,90,61,0.08);
+      --c-accent-hover: #1E3D2A;
+      --c-border: #E4E4DF;
+      --c-border-strong: #D0D0C9;
+      --c-tag-bg: #F0F0EB;
+      --font-display: 'Source Serif 4', Georgia, serif;
+      --font-body: 'DM Sans', -apple-system, sans-serif;
+      --font-mono: 'JetBrains Mono', 'Consolas', monospace;
+      --max-width: 680px;
+    }
+
+    html {
+      font-size: 17px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--c-text);
+      background: var(--c-bg);
+      line-height: 1.7;
+    }
+
+    .page {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ── Nav ── */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 16px 24px;
+      display: flex;
+      justify-content: center;
+      gap: 28px;
+      background: rgba(250,250,248,0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(228,228,223,0.5);
+      opacity: 0;
+      transform: translateY(-8px);
+      animation: fadeDown 0.5s ease 0.4s both;
+    }
+
+    .nav__link {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--c-text-tertiary);
+      text-decoration: none;
+      padding: 4px 0;
+      transition: color 0.15s ease;
+    }
+
+    .nav__link:hover,
+    .nav__link--active {
+      color: var(--c-text);
+    }
+
+    /* ── Page Header ── */
+    .page-header {
+      padding: 80px 0 0;
+      animation: fadeUp 0.6s ease both;
+    }
+
+    .page-header__title {
+      font-family: var(--font-display);
+      font-size: 2.2rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      color: var(--c-text);
+    }
+
+    .page-header__rule {
+      width: 48px;
+      height: 2px;
+      background: var(--c-accent);
+      border: none;
+      margin: 36px 0;
+      opacity: 0.5;
+    }
+
+    /* ── Narrative ── */
+    .narrative {
+      animation: fadeUp 0.6s ease 0.1s both;
+      margin-bottom: 56px;
+    }
+
+    .narrative p {
+      font-size: 1rem;
+      color: var(--c-text-secondary);
+      line-height: 1.75;
+      margin-bottom: 1.2em;
+    }
+
+    .narrative p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* ── Timeline ── */
+    .timeline {
+      animation: fadeUp 0.6s ease 0.2s both;
+      padding-bottom: 16px;
+    }
+
+    .timeline__heading {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--c-accent);
+      margin-bottom: 28px;
+    }
+
+    .timeline__item {
+      position: relative;
+      padding-left: 24px;
+      padding-bottom: 32px;
+    }
+
+    .timeline__item:last-child {
+      padding-bottom: 0;
+    }
+
+    /* Vertical line */
+    .timeline__item::before {
+      content: '';
+      position: absolute;
+      left: 4px;
+      top: 8px;
+      bottom: 0;
+      width: 1px;
+      background: var(--c-border);
+    }
+
+    .timeline__item:last-child::before {
+      display: none;
+    }
+
+    /* Dot */
+    .timeline__item::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 7px;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--c-bg);
+      border: 2px solid var(--c-accent);
+    }
+
+    .timeline__role {
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--c-text);
+      line-height: 1.4;
+    }
+
+    .timeline__org {
+      font-size: 0.9rem;
+      color: var(--c-text-secondary);
+      margin-top: 2px;
+    }
+
+    .timeline__details {
+      font-family: var(--font-mono);
+      font-size: 0.73rem;
+      color: var(--c-text-tertiary);
+      margin-top: 4px;
+      letter-spacing: 0.01em;
+    }
+
+    /* ── Education ── */
+    .education {
+      animation: fadeUp 0.6s ease 0.3s both;
+      margin-top: 48px;
+      padding-bottom: 16px;
+    }
+
+    .education__heading {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--c-accent);
+      margin-bottom: 24px;
+    }
+
+    .education__item {
+      margin-bottom: 16px;
+    }
+
+    .education__item:last-child {
+      margin-bottom: 0;
+    }
+
+    .education__degree {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--c-text);
+    }
+
+    .education__school {
+      font-size: 0.88rem;
+      color: var(--c-text-secondary);
+      margin-top: 1px;
+    }
+
+    .education__year {
+      font-family: var(--font-mono);
+      font-size: 0.73rem;
+      color: var(--c-text-tertiary);
+      margin-top: 2px;
+    }
+
+    /* ── Footer ── */
+    .page-footer {
+      padding: 48px 0 80px;
+      animation: fadeUp 0.6s ease 0.4s both;
+    }
+
+    .page-footer__back {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--c-accent);
+      text-decoration: none;
+      transition: color 0.15s ease;
+    }
+
+    .page-footer__back:hover {
+      color: var(--c-accent-hover);
+    }
+
+    .page-footer__back::before {
+      content: '← ';
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 600px) {
+      .page-header { padding-top: 72px; }
+      .page-header__title { font-size: 1.8rem; }
+      .nav { gap: 18px; padding: 14px 16px; }
+    }
+
+    /* ── Animations ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <a href="/" class="nav__link">Home</a>
+    <a href="/projects" class="nav__link">Projects</a>
+    <a href="/background" class="nav__link nav__link--active">Background</a>
+    <!-- <a href="/resume" class="nav__link">Resume</a> -->
+    <a href="mailto:thomasfinzell@gmail.com" class="nav__link">Contact</a>
+  </nav>
+
+  <main class="page">
+
+    <header class="page-header">
+      <h1 class="page-header__title">Background</h1>
+      <hr class="page-header__rule">
+    </header>
+
+    <section class="narrative">
+      <p>
+        I started in astrophysics, where the work was computational from the beginning. My 
+        PhD wasn't about pointing telescopes — it was about building models of radio emission 
+        from expanding nova ejecta, reconstructing images from interferometric data, and 
+        wrangling observations across ten or more instruments with inconsistent formats, units, 
+        and metadata. The interesting problem was always the same: how do you extract a real 
+        signal from noisy, imperfect, heterogeneous data?
+      </p>
+      <p>
+        From there I moved into roles where I was building things for other people, not just 
+        for my own research. At Macalester, I co-created a computational physics course from 
+        scratch — it's now a permanent part of the major. At Michigan, I founded and funded a 
+        professional development program and redesigned a quarter of the department's lab 
+        curriculum. At Michigan State, I ran a multi-section course with a team of 25+ faculty 
+        and TAs, using performance data to drive iterative improvements. At Carleton, I led 30 
+        applied machine learning projects across a dozen domains, translating vague questions 
+        into concrete implementations. The pattern shifted: I was still building tools, but now 
+        the tools were for teams, for students, for institutions — and I was learning to own 
+        what I built rather than move on to the next paper.
+      </p>
+      <p>
+        The Open Nova Catalog is where it all comes together. I took a dataset I've known since 
+        grad school and decided to build it right — not as a research prototype, but as a 
+        production system designed to persist. Serverless architecture, contract-first backend, 
+        30+ architectural decision records written before code, an immutable release model 
+        designed for safe rollback. It's the project that best represents how I work now: 
+        scientific rigor, real engineering, and a conviction that if you're going to build 
+        something, you owe it to the next person to build it right.
+      </p>
+    </section>
+
+    <section class="timeline">
+      <div class="timeline__heading">Experience</div>
+
+      <div class="timeline__item">
+        <div class="timeline__role">Assistant Professor, Computer Science (Visiting)</div>
+        <div class="timeline__org">Carleton College</div>
+        <div class="timeline__details">Sep 2023 – Sep 2025 · Northfield, MN</div>
+      </div>
+
+      <div class="timeline__item">
+        <div class="timeline__role">Assistant Professor, CMSE (Visiting)</div>
+        <div class="timeline__org">Michigan State University</div>
+        <div class="timeline__details">Sep 2020 – Aug 2023 · East Lansing, MI</div>
+      </div>
+
+      <div class="timeline__item">
+        <div class="timeline__role">Assistant Professor, Physics & Astronomy (Visiting)</div>
+        <div class="timeline__org">Macalester College</div>
+        <div class="timeline__details">Sep 2019 – Aug 2020 · St. Paul, MN</div>
+      </div>
+
+      <div class="timeline__item">
+        <div class="timeline__role">Postdoctoral Researcher, Physics</div>
+        <div class="timeline__org">University of Michigan</div>
+        <div class="timeline__details">Jun 2017 – Aug 2019 · Ann Arbor, MI</div>
+      </div>
+    </section>
+
+    <section class="education">
+      <div class="education__heading">Education</div>
+
+      <div class="education__item">
+        <div class="education__degree">PhD in Astrophysics</div>
+        <div class="education__school">Michigan State University</div>
+        <div class="education__year">2017</div>
+      </div>
+
+      <div class="education__item">
+        <div class="education__degree">BS in Astronomy · BS in Physics · Certificate in Computer Science</div>
+        <div class="education__school">University of Wisconsin–Madison</div>
+        <div class="education__year">2011</div>
+      </div>
+    </section>
+
+    <footer class="page-footer">
+      <a href="/" class="page-footer__back">Back to home</a>
+    </footer>
+
+  </main>
+
+</body>
+</html>

@@ -4,358 +4,522 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Resume — Tom Finzell</title>
-  <meta name="description" content="Tom Finzell's resume — data scientist, ML engineer, and astrophysicist based in the Twin Cities.">
+  <meta name="description" content="Resume for Tom Finzell — Data Scientist, Builder, Astrophysicist. Twin Cities, MN.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,400&family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
-    /* ── Reset & Base ── */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
-      --c-bg: #FAFAF8;
-      --c-surface: #FFFFFF;
-      --c-text: #1C1C1A;
-      --c-text-secondary: #5A5A56;
-      --c-text-tertiary: #8A8A84;
-      --c-accent: #2D5A3D;
-      --c-accent-light: rgba(45,90,61,0.08);
-      --c-accent-hover: #1E3D2A;
-      --c-border: #E4E4DF;
-      --c-border-strong: #D0D0C9;
-      --c-tag-bg: #F0F0EB;
+      --green: #2D5A3D;
+      --green-light: #3a7a52;
+      --green-bg: rgba(45, 90, 61, 0.06);
+      --green-bg-hover: rgba(45, 90, 61, 0.10);
+      --text: #1a1a1a;
+      --text-secondary: #555;
+      --text-light: #777;
+      --border: #e0e0e0;
+      --bg: #fafaf8;
+      --white: #ffffff;
       --font-display: 'Source Serif 4', Georgia, serif;
-      --font-body: 'DM Sans', -apple-system, sans-serif;
-      --font-mono: 'JetBrains Mono', 'Consolas', monospace;
-      --max-width: 680px;
+      --font-body: 'DM Sans', system-ui, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
     }
 
-    html {
-      font-size: 17px;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
       font-family: var(--font-body);
-      color: var(--c-text);
-      background: var(--c-bg);
-      line-height: 1.7;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
     }
 
-    .page {
-      max-width: var(--max-width);
+    /* ── Navigation ── */
+    nav {
+      max-width: 740px;
       margin: 0 auto;
-      padding: 0 24px;
-    }
-
-    /* ── Nav ── */
-    .nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 100;
-      padding: 16px 24px;
+      padding: 2rem 1.5rem 0;
       display: flex;
-      justify-content: center;
-      gap: 28px;
-      background: rgba(250,250,248,0.85);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(228,228,223,0.5);
-      opacity: 0;
-      transform: translateY(-8px);
-      animation: fadeDown 0.5s ease 0.4s both;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      align-items: baseline;
     }
 
-    .nav__link {
+    nav a {
       font-family: var(--font-mono);
-      font-size: 0.72rem;
+      font-size: 0.8rem;
       font-weight: 500;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--c-text-tertiary);
+      color: var(--text-light);
       text-decoration: none;
-      padding: 4px 0;
-      transition: color 0.15s ease;
+      letter-spacing: 0.01em;
+      transition: color 0.2s;
     }
 
-    .nav__link:hover,
-    .nav__link--active {
-      color: var(--c-text);
+    nav a:hover, nav a.active {
+      color: var(--green);
     }
 
-    /* ── Page Header ── */
-    .page-header {
-      padding: 80px 0 0;
-      animation: fadeUp 0.6s ease both;
+    /* ── Main content ── */
+    main {
+      max-width: 740px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem 4rem;
     }
 
-    .page-header__title {
+    h1 {
       font-family: var(--font-display);
       font-size: 2.2rem;
-      font-weight: 600;
-      letter-spacing: -0.02em;
-      line-height: 1.15;
-      color: var(--c-text);
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.75rem;
     }
 
-    .page-header__rule {
-      width: 48px;
-      height: 2px;
-      background: var(--c-accent);
-      border: none;
-      margin: 36px 0;
-      opacity: 0.5;
-    }
-
-    /* ── Resume Content ── */
-    .resume-intro {
-      animation: fadeUp 0.6s ease 0.1s both;
-      margin-bottom: 36px;
-    }
-
-    .resume-intro p {
+    .intro {
       font-size: 1rem;
-      color: var(--c-text-secondary);
-      line-height: 1.75;
+      color: var(--text-secondary);
+      max-width: 600px;
+      margin-bottom: 1.5rem;
     }
 
-    /* ── Download Card ── */
-    .download-card {
-      animation: fadeUp 0.6s ease 0.2s both;
-      padding: 28px;
-      background: var(--c-surface);
-      border: 1px solid var(--c-border);
-      border-radius: 10px;
+    hr {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 0 0 2.5rem;
+    }
+
+    /* ── Download bar ── */
+    .download-bar {
       display: flex;
       align-items: center;
-      gap: 20px;
-      transition: border-color 0.2s ease, box-shadow 0.2s ease;
-      margin-bottom: 40px;
+      gap: 1rem;
+      background: var(--green-bg);
+      border: 1px solid rgba(45, 90, 61, 0.12);
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      margin-bottom: 2.5rem;
     }
 
-    .download-card:hover {
-      border-color: var(--c-border-strong);
-      box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    .download-bar .icon {
+      font-size: 1.5rem;
+      flex-shrink: 0;
     }
 
-    .download-card__icon {
-      width: 48px;
-      height: 48px;
-      min-width: 48px;
-      background: var(--c-accent-light);
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .download-card__icon svg {
-      width: 22px;
-      height: 22px;
-      color: var(--c-accent);
-    }
-
-    .download-card__content {
+    .download-bar .info {
       flex: 1;
     }
 
-    .download-card__title {
-      font-family: var(--font-body);
-      font-size: 0.95rem;
-      font-weight: 600;
-      color: var(--c-text);
-      margin-bottom: 2px;
-    }
-
-    .download-card__meta {
+    .download-bar .label {
       font-family: var(--font-mono);
-      font-size: 0.73rem;
-      color: var(--c-text-tertiary);
-      letter-spacing: 0.01em;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--green);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
     }
 
-    .download-card__link {
+    .download-bar .meta {
+      font-size: 0.8rem;
+      color: var(--text-light);
+      margin-top: 0.1rem;
+    }
+
+    .download-btn {
       font-family: var(--font-mono);
       font-size: 0.78rem;
-      font-weight: 500;
-      color: var(--c-accent);
-      text-decoration: none;
-      white-space: nowrap;
-      transition: color 0.15s ease;
-      padding: 8px 16px;
-      border: 1.5px solid var(--c-accent);
+      font-weight: 600;
+      color: var(--white);
+      background: var(--green);
+      border: none;
       border-radius: 6px;
+      padding: 0.55rem 1.2rem;
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      transition: background 0.2s;
+      white-space: nowrap;
     }
 
-    .download-card__link:hover {
-      color: var(--c-surface);
-      background: var(--c-accent);
+    .download-btn:hover {
+      background: var(--green-light);
     }
 
-    /* ── Highlights ── */
-    .highlights {
-      animation: fadeUp 0.6s ease 0.3s both;
-      margin-bottom: 16px;
-    }
-
-    .highlights__heading {
+    /* ── Section headings ── */
+    .section-title {
       font-family: var(--font-mono);
-      font-size: 0.7rem;
-      font-weight: 500;
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--green);
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--c-accent);
-      margin-bottom: 20px;
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1.5px solid var(--green);
     }
 
-    .highlights__grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
+    /* ── Objective ── */
+    .objective {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 2.5rem;
     }
 
-    .highlight {
-      padding: 18px 20px;
-      background: var(--c-surface);
-      border: 1px solid var(--c-border);
-      border-radius: 8px;
+    /* ── Skills ── */
+    .skills-section {
+      margin-bottom: 2.5rem;
     }
 
-    .highlight__label {
+    .skill-group {
+      margin-bottom: 0.75rem;
+      display: flex;
+      gap: 0.5rem;
+      align-items: baseline;
+      flex-wrap: wrap;
+    }
+
+    .skill-label {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--text);
+      letter-spacing: 0.02em;
+      min-width: 120px;
+      flex-shrink: 0;
+    }
+
+    .skill-items {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* ── Experience ── */
+    .experience-section {
+      margin-bottom: 2.5rem;
+    }
+
+    .role {
+      margin-bottom: 1.75rem;
+    }
+
+    .role-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 0.15rem;
+    }
+
+    .role-title {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .role-dates {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--text-light);
+      letter-spacing: 0.02em;
+      white-space: nowrap;
+    }
+
+    .role-org {
+      font-size: 0.88rem;
+      color: var(--text-light);
+      font-style: italic;
+      margin-bottom: 0.6rem;
+    }
+
+    .role ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .role li {
+      position: relative;
+      padding-left: 1rem;
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      margin-bottom: 0.4rem;
+    }
+
+    .role li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.55em;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--green);
+    }
+
+    /* ── Education ── */
+    .education-section {
+      margin-bottom: 2rem;
+    }
+
+    .edu-entry {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 1rem;
+      margin-bottom: 0.4rem;
+      flex-wrap: wrap;
+    }
+
+    .edu-degree {
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .edu-school {
+      font-size: 0.88rem;
+      color: var(--text-light);
+    }
+
+    .edu-year {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--text-light);
+    }
+
+    /* ── Certs row ── */
+    .certs {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+    }
+
+    .cert-tag {
       font-family: var(--font-mono);
       font-size: 0.68rem;
       font-weight: 500;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--c-text-tertiary);
-      margin-bottom: 8px;
+      color: var(--green);
+      background: var(--green-bg);
+      border: 1px solid rgba(45, 90, 61, 0.12);
+      border-radius: 4px;
+      padding: 0.25rem 0.6rem;
+      letter-spacing: 0.02em;
     }
 
-    .highlight__text {
-      font-size: 0.9rem;
-      color: var(--c-text-secondary);
-      line-height: 1.55;
-    }
-
-    /* ── Footer ── */
-    .page-footer {
-      padding: 48px 0 80px;
-      animation: fadeUp 0.6s ease 0.4s both;
-    }
-
-    .page-footer__back {
+    /* ── Footer link ── */
+    .back-link {
+      display: inline-block;
       font-family: var(--font-mono);
       font-size: 0.78rem;
-      font-weight: 500;
-      color: var(--c-accent);
+      color: var(--text-light);
       text-decoration: none;
-      transition: color 0.15s ease;
+      margin-top: 2rem;
+      transition: color 0.2s;
     }
 
-    .page-footer__back:hover {
-      color: var(--c-accent-hover);
-    }
-
-    .page-footer__back::before {
-      content: '← ';
+    .back-link:hover {
+      color: var(--green);
     }
 
     /* ── Responsive ── */
     @media (max-width: 600px) {
-      .page-header { padding-top: 72px; }
-      .page-header__title { font-size: 1.8rem; }
-      .nav { gap: 18px; padding: 14px 16px; }
-      .highlights__grid { grid-template-columns: 1fr; }
-      .download-card { flex-direction: column; align-items: flex-start; gap: 16px; }
-    }
-
-    /* ── Animations ── */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(16px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes fadeDown {
-      from { opacity: 0; transform: translateY(-8px); }
-      to { opacity: 1; transform: translateY(0); }
+      main { padding: 2rem 1.25rem 3rem; }
+      h1 { font-size: 1.8rem; }
+      .skill-label { min-width: auto; width: 100%; }
+      .role-header { flex-direction: column; gap: 0.15rem; }
+      .edu-entry { flex-direction: column; gap: 0.1rem; }
     }
   </style>
 </head>
 <body>
 
-  <nav class="nav">
-    <a href="/" class="nav__link">Home</a>
-    <a href="/projects" class="nav__link">Projects</a>
-    <a href="/background" class="nav__link">Background</a>
-    <a href="/resume" class="nav__link nav__link--active">Resume</a>
-    <a href="mailto:thomasfinzell@gmail.com" class="nav__link">Contact</a>
-  </nav>
+<nav>
+  <a href="https://tomfinzell.com/">Home</a>
+  <a href="https://tomfinzell.com/projects">Projects</a>
+  <a href="https://tomfinzell.com/background">Background</a>
+  <a href="https://tomfinzell.com/resume" class="active">Resume</a>
+  <a href="mailto:thomasfinzell@gmail.com">Contact</a>
+</nav>
 
-  <main class="page">
+<main>
 
-    <header class="page-header">
-      <h1 class="page-header__title">Resume</h1>
-      <hr class="page-header__rule">
-    </header>
+  <h1>Resume</h1>
+  <p class="intro">
+    I'm looking for data science, ML engineering, or research roles in the Twin Cities.
+    Here's what I bring — or grab the PDF if you prefer the paper version.
+  </p>
+  <hr>
 
-    <section class="resume-intro">
-      <p>
-        I'm looking for data science, ML engineering, or research roles in the Twin Cities. 
-        Below is my current resume — feel free to download it, or check out my 
-        <a href="/projects" style="color: var(--c-accent);">projects</a> and 
-        <a href="/background" style="color: var(--c-accent);">background</a> for more detail.
-      </p>
-    </section>
+  <!-- Download bar -->
+  <div class="download-bar">
+    <span class="icon">📄</span>
+    <div class="info">
+      <div class="label">Download PDF</div>
+      <div class="meta">Tom Finzell — Resume · Updated April 2026</div>
+    </div>
+    <a href="assets/tom_finzell_resume.pdf" class="download-btn" download>Download</a>
+  </div>
 
-    <!-- Download Card -->
-    <div class="download-card">
-      <div class="download-card__icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-          <polyline points="14 2 14 8 20 8"/>
-          <line x1="12" y1="18" x2="12" y2="12"/>
-          <polyline points="9 15 12 18 15 15"/>
-        </svg>
-      </div>
-      <div class="download-card__content">
-        <div class="download-card__title">Tom Finzell — Resume</div>
-        <div class="download-card__meta">PDF · Updated soon</div>
-      </div>
-      <!-- TODO: Replace href with path to updated resume PDF in repo -->
-      <a href="#" class="download-card__link" onclick="alert('Resume PDF coming soon — we are building the definitive version!'); return false;">Download</a>
+  <!-- Objective -->
+  <p class="objective">
+    Data Scientist and Astrophysicist with expertise in machine learning, data engineering,
+    and scientific computing. Experienced building end-to-end data pipelines and ML systems
+    on AWS. Proven leader of cross-functional technical teams, with a track record of
+    delivering reproducible, data-driven solutions to complex real-world problems.
+  </p>
+
+  <!-- Skills -->
+  <div class="skills-section">
+    <div class="section-title">Technical Skills</div>
+
+    <div class="skill-group">
+      <span class="skill-label">Infrastructure</span>
+      <span class="skill-items">AWS (Lambda, Step Functions, DynamoDB, S3, CloudFront, CDK, Fargate, CloudWatch, SNS), CI/CD, Infrastructure as Code</span>
     </div>
 
-    <!-- At-a-glance highlights -->
-    <section class="highlights">
-      <div class="highlights__heading">At a Glance</div>
-      <div class="highlights__grid">
-        <div class="highlight">
-          <div class="highlight__label">Focus</div>
-          <div class="highlight__text">Data science, ML engineering, signal processing, scientific computing</div>
-        </div>
-        <div class="highlight">
-          <div class="highlight__label">Stack</div>
-          <div class="highlight__text">Python, AWS (CDK, Lambda, Step Functions, DynamoDB), React, SQL</div>
-        </div>
-        <div class="highlight">
-          <div class="highlight__label">Certs</div>
-          <div class="highlight__text">AWS Cloud Practitioner, AWS Solutions Architect – Associate</div>
-        </div>
-        <div class="highlight">
-          <div class="highlight__label">Education</div>
-          <div class="highlight__text">PhD Astrophysics (MSU), BS Astronomy + BS Physics + CS Certificate (UW–Madison)</div>
-        </div>
+    <div class="skill-group">
+      <span class="skill-label">Data Engineering</span>
+      <span class="skill-items">ETL Pipelines, Data Validation, Schema Design, Contract-First Architecture (Pydantic), Data Wrangling</span>
+    </div>
+
+    <div class="skill-group">
+      <span class="skill-label">ML / Analysis</span>
+      <span class="skill-items">Python, SQL, R, C++, Pandas, NumPy, scikit-learn, TensorFlow/Keras, Jupyter, Regression, Neural Networks, Cluster Analysis, Transformers, EDA</span>
+    </div>
+
+    <div class="skill-group">
+      <span class="skill-label">Scientific</span>
+      <span class="skill-items">Time-Series Analysis, Signal Processing, Predictive Modeling, Experimental Design, Uncertainty Quantification, Spectroscopy/Photometry</span>
+    </div>
+  </div>
+
+  <!-- Experience -->
+  <div class="experience-section">
+    <div class="section-title">Professional Experience</div>
+
+    <div class="role">
+      <div class="role-header">
+        <span class="role-title">Independent Data Platform Project</span>
+        <span class="role-dates">Feb 2026 – Present</span>
       </div>
-    </section>
+      <div class="role-org">Open Nova Catalog</div>
+      <ul>
+        <li>Designed and built a serverless data platform that ingests, validates, and serves astronomical observation data from public archives — solo project covering architecture, infrastructure, backend, frontend, and documentation.</li>
+        <li>Architected full AWS infrastructure using CDK (Python): 17 Lambda functions, 7 Step Functions workflows, Fargate-based artifact generation, DynamoDB (single-table design), S3/CloudFront delivery.</li>
+        <li>Built a contract-first Python backend with Pydantic models at every service boundary, mypy strict enforcement, and end-to-end smoke tests against live AWS infrastructure.</li>
+        <li>Developed ingestion pipeline handling heterogeneous data from multiple public archives — identity resolution via coordinate-based deduplication, profile-driven FITS validation, SHA-256 fingerprinting, and explicit quarantine semantics for irreconcilable conflicts.</li>
+        <li>Implemented LTTB and density-preserving log downsampling algorithms for scientific time-series visualization; designed multi-band photometry offset algorithm using spline fitting and union-find clustering.</li>
+        <li>Built React/Next.js frontend with interactive Plotly.js scientific visualizations (spectra waterfall plots, multi-regime light curves) and a semantic design token system.</li>
+        <li>Wrote 30+ architectural decision records before implementation — covering identity resolution, data validation, quarantine semantics, downsampling algorithms, and immutable release model.</li>
+        <li>Designed an immutable artifact release model: all data products written to a new S3 prefix before an atomic pointer update makes them visible. Rollback is a single JSON write.</li>
+      </ul>
+    </div>
 
-    <footer class="page-footer">
-      <a href="/" class="page-footer__back">Back to home</a>
-    </footer>
+    <div class="role">
+      <div class="role-header">
+        <span class="role-title">Assistant Professor, Computer Science (Visiting)</span>
+        <span class="role-dates">Sep 2023 – Sep 2025</span>
+      </div>
+      <div class="role-org">Carleton College</div>
+      <ul>
+        <li>Led 30 applied machine learning projects on real-world datasets, guiding teams through problem formulation, feature engineering, model validation, and reproducible delivery.</li>
+        <li>Designed and led a project-based machine learning course; 10+ student teams per term built end-to-end ML pipelines (regression, deep learning, cluster analysis, transformers, EDA) on real datasets.</li>
+        <li>Provided technical mentorship on scalable architecture, testing strategies, and modular software design.</li>
+      </ul>
+    </div>
 
-  </main>
+    <div class="role">
+      <div class="role-header">
+        <span class="role-title">Assistant Professor, CMSE (Visiting)</span>
+        <span class="role-dates">Sep 2020 – Aug 2023</span>
+      </div>
+      <div class="role-org">Michigan State University</div>
+      <ul>
+        <li>Managed a cross-functional team of 5+ faculty and 20+ teaching assistants delivering a multi-section introductory physics sequence.</li>
+        <li>Directed the iterative improvement of curriculum using performance data.</li>
+        <li>Facilitated weekly coordination meetings with stakeholders to align on goals and progress.</li>
+      </ul>
+    </div>
+
+    <div class="role">
+      <div class="role-header">
+        <span class="role-title">Assistant Professor, Physics &amp; Astronomy (Visiting)</span>
+        <span class="role-dates">Sep 2019 – Aug 2020</span>
+      </div>
+      <div class="role-org">Macalester College</div>
+      <ul>
+        <li>Created a Computational Physics course from scratch: curriculum design, materials development, and instruction in numerical methods, simulation, and scientific computing (Python).</li>
+      </ul>
+    </div>
+
+    <div class="role">
+      <div class="role-header">
+        <span class="role-title">Postdoctoral Researcher, Physics</span>
+        <span class="role-dates">Jun 2017 – Aug 2019</span>
+      </div>
+      <div class="role-org">University of Michigan</div>
+      <ul>
+        <li>Founded and led a cross-functional program involving faculty, assistants, and stakeholders; secured funding and delivered measurable outcomes.</li>
+        <li>Redesigned data-driven workflows impacting courses serving ~1,200 users annually.</li>
+        <li>Supervised three undergraduate researchers through a project resulting in a peer-reviewed poster at the 2019 AAPT national meeting.</li>
+      </ul>
+    </div>
+
+    <div class="role">
+      <div class="role-header">
+        <span class="role-title">Graduate Research Assistant</span>
+        <span class="role-dates">Sep 2011 – May 2017</span>
+      </div>
+      <div class="role-org">Michigan State University</div>
+      <ul>
+        <li>Constructed the original Open Nova Catalog dataset — data wrangling and integration across 10+ heterogeneous instruments with inconsistent formats, units, and metadata.</li>
+        <li>Developed 2D Fourier image reconstruction pipelines for interferometric radio data.</li>
+        <li>Built computational models of radio emission from expanding plasma shells.</li>
+        <li>Analyzed multi-epoch time-series brightness measurements to characterize transient astrophysical events.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Education -->
+  <div class="education-section">
+    <div class="section-title">Education</div>
+
+    <div class="edu-entry">
+      <div>
+        <span class="edu-degree">Ph.D. in Astrophysics</span>
+        <span class="edu-school"> — Michigan State University</span>
+      </div>
+      <span class="edu-year">2017</span>
+    </div>
+
+    <div class="edu-entry">
+      <div>
+        <span class="edu-degree">B.S. in Astronomy, B.S. in Physics</span>
+        <span class="edu-school"> — University of Wisconsin–Madison</span>
+      </div>
+      <span class="edu-year">2011</span>
+    </div>
+
+    <div class="edu-entry">
+      <div>
+        <span class="edu-degree">Minor in Computer Science</span>
+        <span class="edu-school"> — University of Wisconsin–Madison</span>
+      </div>
+    </div>
+
+    <div class="certs">
+      <span class="cert-tag">AWS Cloud Practitioner</span>
+      <span class="cert-tag">AWS Solutions Architect</span>
+    </div>
+  </div>
+
+  <a href="https://tomfinzell.com/" class="back-link">← Back to home</a>
+
+</main>
 
 </body>
 </html>
